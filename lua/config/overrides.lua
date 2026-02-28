@@ -1,0 +1,17 @@
+-- NeoJoy: User override layer
+-- Edit this file to personalize NeoJoy without forking.
+-- Loaded with pcall from init.lua — errors here will not crash startup.
+--
+-- OPTIONS
+--   vim.opt.relativenumber = false
+--   vim.opt.colorcolumn = ""
+--
+-- KEYMAPS
+--   vim.keymap.set("n", "<leader>x", ":SomeCommand<cr>", { desc = "My command" })
+--
+-- PLUGINS
+--   To add plugins, create a file in lua/plugins/extras/
+--   lazy.nvim scans that directory automatically.
+--
+--   To override an existing plugin's config, add a file to lua/plugins/extras/
+--   with a spec that uses the same plugin name — lazy.nvim merges by name.
