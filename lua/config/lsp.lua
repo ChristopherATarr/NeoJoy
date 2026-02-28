@@ -28,11 +28,11 @@ M.on_attach = function(client, bufnr)
         vim.lsp.buf.format({ async = true })
     end, { desc = "Format buffer" })
 
-    -- Diagnostics
-    map("<leader>d",  vim.diagnostic.open_float, { desc = "Show diagnostic float" })
+    -- Diagnostics (<leader>d namespace belongs to DAP; diagnostics use subkeys)
+    map("<leader>dd", vim.diagnostic.open_float, { desc = "Show diagnostic float" })
     map("[d",         vim.diagnostic.goto_prev,  { desc = "Prev diagnostic" })
     map("]d",         vim.diagnostic.goto_next,  { desc = "Next diagnostic" })
-    map("<leader>dl", vim.diagnostic.setloclist, { desc = "Diagnostic list" })
+    map("<leader>dq", vim.diagnostic.setloclist, { desc = "Diagnostic quickfix list" })
 
     -- Format on save (only when client supports it)
     if client and client.supports_method("textDocument/formatting") then
