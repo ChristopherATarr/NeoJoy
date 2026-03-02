@@ -113,4 +113,4 @@ of the lockfile. See the [security plan](docs/) for full details.
 
 ## License
 
-MIT
+GPL-3.0
