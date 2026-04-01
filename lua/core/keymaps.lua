@@ -49,3 +49,23 @@ map("n", "<leader>Q", ":qa!<CR>", { desc = "Force quit all" })
 
 -- Theme switcher
 map("n", "<leader>th", ":Themery<CR>", { desc = "Theme switcher" })
+
+-- Maintenance
+map("n", "<leader>uu", function()
+    vim.cmd("Lazy update")
+end, { desc = "Update plugins" })
+
+map("n", "<leader>ut", function()
+    vim.cmd("TSUpdate")
+end, { desc = "Update treesitter parsers" })
+
+map("n", "<leader>um", function()
+    vim.cmd("MasonUpdate")
+end, { desc = "Update Mason registry" })
+
+map("n", "<leader>ua", function()
+    vim.notify("Updating all: plugins, parsers, Mason...", vim.log.levels.INFO)
+    vim.cmd("Lazy update")
+    vim.cmd("TSUpdate")
+    vim.cmd("MasonUpdate")
+end, { desc = "Update all (plugins + parsers + Mason)" })
