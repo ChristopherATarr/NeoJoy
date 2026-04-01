@@ -30,23 +30,25 @@ return {
             local dashboard = require("alpha.themes.dashboard")
 
             dashboard.section.header.val = {
-                "                                                   ",
-                " ███╗   ██╗███████╗ ██████╗      ██╗ ██████╗ ██╗ ",
-                " ████╗  ██║██╔════╝██╔═══██╗     ██║██╔═══██╗╚██╗",
-                " ██╔██╗ ██║█████╗  ██║   ██║     ██║██║   ██║ ╚██╗",
-                " ██║╚██╗██║██╔══╝  ██║   ██║██   ██║██║   ██║ ██╔╝",
-                " ██║ ╚████║███████╗╚██████╔╝╚█████╔╝╚██████╔╝██╔╝ ",
-                " ╚═╝  ╚═══╝╚══════╝ ╚═════╝  ╚════╝  ╚═════╝╚═╝  ",
-                "                                                   ",
-                "              In honor of Bill Joy                 ",
-                "                                                   ",
+                "                                                     ",
+                " ███╗   ██╗███████╗ ██████╗      ██╗ ██████╗ ██╗   ██╗",
+                " ████╗  ██║██╔════╝██╔═══██╗     ██║██╔═══██╗╚██╗ ██╔╝",
+                " ██╔██╗ ██║█████╗  ██║   ██║     ██║██║   ██║ ╚████╔╝ ",
+                " ██║╚██╗██║██╔══╝  ██║   ██║██   ██║██║   ██║  ╚██╔╝  ",
+                " ██║ ╚████║███████╗╚██████╔╝╚█████╔╝╚██████╔╝   ██║   ",
+                " ╚═╝  ╚═══╝╚══════╝ ╚═════╝  ╚════╝  ╚═════╝    ╚═╝   ",
+                "                                                     ",
+                "               In honor of Bill Joy                  ",
+                "                                                     ",
             }
 
             dashboard.section.buttons.val = {
-                dashboard.button("f", "  Find file",    "<cmd>Telescope find_files<cr>"),
-                dashboard.button("r", "  Recent files", "<cmd>Telescope oldfiles<cr>"),
-                dashboard.button("g", "  Live grep",    "<cmd>Telescope live_grep<cr>"),
-                dashboard.button("q", "  Quit",         "<cmd>qa<cr>"),
+                dashboard.button("f", "  Find file",       "<cmd>Telescope find_files<cr>"),
+                dashboard.button("r", "  Recent files",    "<cmd>Telescope oldfiles<cr>"),
+                dashboard.button("g", "  Live grep",       "<cmd>Telescope live_grep<cr>"),
+                dashboard.button("t", "  Theme switcher",  "<cmd>Themery<cr>"),
+                dashboard.button("u", "  Update all",      "<cmd>lua vim.notify('Updating all: plugins, parsers, Mason...', vim.log.levels.INFO); vim.cmd('Lazy update'); vim.cmd('TSUpdate'); vim.cmd('MasonUpdate')<cr>"),
+                dashboard.button("q", "  Quit",            "<cmd>qa<cr>"),
             }
 
             -- Only show dashboard when nvim started with no file arguments

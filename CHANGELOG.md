@@ -7,6 +7,12 @@
   `<leader>um` (Mason), `<leader>ua` (update all)
 - Man page (`neojoy.1`)
 - Theme switcher with Solarized Dark option (`<leader>th` / `:Themery`)
+- Cyberdream colorscheme as new default (cyberpunk dark aesthetic)
+- Dashboard: theme switcher and update-all buttons on welcome page
+
+### Changed
+- Default colorscheme from Catppuccin Mocha to Cyberdream
+- Fixed NEOJOY banner Y glyph on dashboard
 
 ### Fixed
 - nvim-treesitter config error on every file open — updated for Neovim 0.12

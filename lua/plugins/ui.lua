@@ -2,13 +2,29 @@
 
 return {
 
-    -- Colorscheme: catppuccin mocha (default)
+    -- Colorscheme: cyberdream (default) — cyberpunk dark
     -- lazy=false + priority=1000: loads before everything else, every boot
+    {
+        "scottmckendry/cyberdream.nvim",
+        lazy     = false,
+        priority = 1000,
+        opts = {
+            transparent  = true,
+            italic_comments = true,
+            borderless_pickers = false,
+        },
+        config = function(_, opts)
+            require("cyberdream").setup(opts)
+            vim.cmd.colorscheme("cyberdream")
+        end,
+    },
+
+    -- Colorscheme: catppuccin mocha (alternate)
     {
         "catppuccin/nvim",
         name     = "catppuccin",
         lazy     = false,
-        priority = 1000,
+        priority = 999,
         opts = {
             flavour = "mocha",
             integrations = {
@@ -22,16 +38,14 @@ return {
         },
         config = function(_, opts)
             require("catppuccin").setup(opts)
-            vim.cmd.colorscheme("catppuccin")
         end,
     },
 
-    -- Colorscheme: solarized dark (transparent background)
-    -- priority=999: setup runs at boot but catppuccin remains active default
+    -- Colorscheme: solarized dark (alternate)
     {
         "maxmx03/solarized.nvim",
         lazy     = false,
-        priority = 999,
+        priority = 998,
         opts = {
             variant     = "dark",
             transparent = { enabled = true },
@@ -49,6 +63,7 @@ return {
         config = function()
             require("themery").setup({
                 themes = {
+                    { name = "Cyberdream",       colorscheme = "cyberdream" },
                     { name = "Catppuccin Mocha", colorscheme = "catppuccin" },
                     { name = "Solarized Dark",   colorscheme = "solarized" },
                 },
