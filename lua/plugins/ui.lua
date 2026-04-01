@@ -2,7 +2,7 @@
 
 return {
 
-    -- Colorscheme: catppuccin mocha
+    -- Colorscheme: catppuccin mocha (default)
     -- lazy=false + priority=1000: loads before everything else, every boot
     {
         "catppuccin/nvim",
@@ -26,6 +26,37 @@ return {
         end,
     },
 
+    -- Colorscheme: solarized dark (transparent background)
+    -- priority=999: setup runs at boot but catppuccin remains active default
+    {
+        "maxmx03/solarized.nvim",
+        lazy     = false,
+        priority = 999,
+        opts = {
+            variant     = "dark",
+            transparent = { enabled = true },
+        },
+        config = function(_, opts)
+            require("solarized").setup(opts)
+        end,
+    },
+
+    -- Theme switcher: :Themery or <leader>th
+    -- Persists selection to ~/.local/share/neojoy/themery.lua
+    {
+        "zaldih/themery.nvim",
+        cmd = "Themery",
+        config = function()
+            require("themery").setup({
+                themes = {
+                    { name = "Catppuccin Mocha", colorscheme = "catppuccin" },
+                    { name = "Solarized Dark",   colorscheme = "solarized" },
+                },
+                livePreview = true,
+            })
+        end,
+    },
+
     -- Statusline
     {
         "nvim-lualine/lualine.nvim",
@@ -33,7 +64,7 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             options = {
-                theme                = "catppuccin",
+                theme                = "auto",
                 globalstatus         = true,
                 component_separators = { left = "", right = "" },
                 section_separators   = { left = "", right = "" },

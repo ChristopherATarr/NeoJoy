@@ -46,3 +46,6 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv",   { desc = "Move selection up" })
 map("n", "<leader>w", ":w<CR>",   { desc = "Save file" })
 map("n", "<leader>q", ":q<CR>",   { desc = "Quit" })
 map("n", "<leader>Q", ":qa!<CR>", { desc = "Force quit all" })
+
+-- Theme switcher
+map("n", "<leader>th", ":Themery<CR>", { desc = "Theme switcher" })
