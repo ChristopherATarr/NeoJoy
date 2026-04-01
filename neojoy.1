@@ -1,0 +1,187 @@
+.\" neojoy.1 — man page for NeoJoy
+.\" In honor of Bill Joy.
+.TH NEOJOY 1 "April 2026" "neojoy 1.0.0" "NeoJoy"
+.SH NAME
+neojoy \- fast, modular Neovim distribution
+.SH SYNOPSIS
+.B NVIM_APPNAME=neojoy nvim
+.RI [ file .\|.\|.]
+.SH DESCRIPTION
+.B NeoJoy
+is a Neovim distribution built for speed, modularity, and security.
+It uses
+.B NVIM_APPNAME
+isolation so it does not interfere with an existing Neovim configuration.
+.PP
+Named in honor of Bill Joy, who wrote vi, co-founded Sun Microsystems,
+and shaped the UNIX tools developers still reach for every day.
+.SH FEATURES
+.TP
+.B Fast startup
+Target <50ms. All plugins lazy-loaded via lazy.nvim.
+.TP
+.B LSP
+Mason server management, diagnostics, hover, go-to-definition,
+format on save.
+.TP
+.B Completion
+nvim-cmp with LSP, buffer, path, and snippet sources (LuaSnip).
+.TP
+.B Treesitter
+Parser management for Neovim 0.12+. Syntax highlighting and
+indentation handled natively by Neovim.
+.TP
+.B Git
+gitsigns in the gutter, lazygit integration, hunk navigation.
+.TP
+.B Fuzzy finding
+Telescope with native fzf sorter.
+.TP
+.B Themes
+Catppuccin Mocha (default) and Solarized Dark, switchable at
+runtime via
+.B :Themery
+or
+.BR <leader>th .
+Selection persists across sessions.
+.TP
+.B DAP
+Debug Adapter Protocol support via nvim-dap, dap-ui, and
+mason-nvim-dap.
+.TP
+.B Polish
+nvim-notify, alpha dashboard, todo-comments, spectre, surround.
+.TP
+.B Override-friendly
+Extend without forking via
+.IR lua/config/overrides.lua .
+.TP
+.B Security-conscious
+Pinned plugin versions in lazy-lock.json. No auto-installation
+of treesitter parsers.
+.SH KEY BINDINGS
+.SS General
+.TP
+.B <Space>
+Leader key.
+.TP
+.B jk
+Exit insert mode.
+.TP
+.B <leader>w
+Save file.
+.TP
+.B <leader>q
+Quit.
+.TP
+.B <leader>Q
+Force quit all.
+.TP
+.B <leader>h
+Clear search highlight.
+.SS Navigation
+.TP
+.B <C-h/j/k/l>
+Window navigation.
+.TP
+.B <S-h> / <S-l>
+Previous / next buffer.
+.TP
+.B <leader>ff
+Find files (Telescope).
+.TP
+.B <leader>fg
+Live grep (Telescope).
+.TP
+.B <leader>fb
+Buffers (Telescope).
+.SS Editing
+.TP
+.B <A-j> / <A-k>
+Move line or selection down / up.
+.TP
+.B < / >
+Indent left / right, keeping visual selection.
+.SS Git
+.TP
+.B <leader>gg
+LazyGit.
+.SS Terminal
+.TP
+.B <C-\e>
+Toggle terminal.
+.SS Theme
+.TP
+.B <leader>th
+Theme switcher (Themery).
+.SH CUSTOMIZATION
+Edit
+.I lua/config/overrides.lua
+to adjust options and keymaps without forking.
+To add plugins, create a file in
+.IR lua/plugins/extras/ \(em
+lazy.nvim picks it up automatically on next launch.
+.SH FILES
+.TP
+.I ~/.config/neojoy/init.lua
+Entry point.
+.TP
+.I ~/.config/neojoy/lazy-lock.json
+Pinned plugin versions (commit hashes).
+.TP
+.I ~/.config/neojoy/lua/core/
+Core configuration: options, keymaps, autocommands, lazy.nvim bootstrap.
+.TP
+.I ~/.config/neojoy/lua/plugins/
+Plugin specifications: lsp, completion, treesitter, git, navigation,
+ui, dap, polish.
+.TP
+.I ~/.config/neojoy/lua/config/
+LSP server configuration and user overrides.
+.TP
+.I ~/.config/neojoy/lua/plugins/extras/
+User-added plugin specifications.
+.TP
+.I ~/.config/neojoy/tests/
+TDD test suite (141 tests across 9 sessions).
+.SH REQUIREMENTS
+.TP
+.B Neovim >= 0.12
+.TP
+.B Git
+.TP
+.B A Nerd Font
+For icons.
+.TP
+.B make and a C compiler
+For telescope-fzf-native.
+.TP
+.B lazygit
+Optional, for the lazygit integration.
+.SH INSTALLATION
+.nf
+git clone https://github.com/ChristopherATarr/NeoJoy ~/.config/neojoy
+NVIM_APPNAME=neojoy nvim
+.fi
+.PP
+On first launch, lazy.nvim installs all plugins automatically.
+.SS Shell alias (recommended)
+.nf
+alias nj='NVIM_APPNAME=neojoy nvim'
+.fi
+.SH SECURITY
+Plugin versions are pinned in
+.I lazy-lock.json
+to specific commit hashes. Updates require an explicit
+.B :Lazy update
+followed by review and re-commit of the lockfile.
+Treesitter parsers are not auto-installed; missing parsers are
+installed explicitly by the config function at load time.
+.SH AUTHORS
+Gofannon, with Christopher and Awen.
+.SH LICENSE
+GPL-3.0
+.SH SEE ALSO
+.BR nvim (1),
+.BR git (1),
+.BR lazygit (1)
